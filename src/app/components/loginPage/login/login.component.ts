@@ -1,3 +1,4 @@
+import { User } from './../../../models/user';
 import { AccountService } from './../../../services/account.service';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -10,7 +11,7 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent {
   loginForm!: FormGroup;
-
+  loginUser!: User
   constructor(private loginFormBuilder :  FormBuilder, private router: Router, private accountService : AccountService){
 
   }

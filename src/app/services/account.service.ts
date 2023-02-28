@@ -1,3 +1,4 @@
+import { User } from './../models/user';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -8,15 +9,14 @@ export class AccountService {
   user: any
   constructor() { }
 
-  login(form: any): any{
+  login(formLogin: any): any{
     let l: boolean = false
     if(localStorage.getItem("accounts")){
       console.log(localStorage.getItem("accounts"))
       this.account = localStorage.getItem("accounts")
       this.account = JSON.parse(this.account?.toString())
-      //console.log(JSON.parse(a))
       this.account.forEach((element: any) => {
-          if(element.email === form.value.email && element.senha === form.value.senha){
+          if(element.email === formLogin.value.email && element.senha === formLogin.value.senha){
             sessionStorage.setItem("user", JSON.stringify(element))
             l = true
           }
@@ -24,30 +24,31 @@ export class AccountService {
       return l
     }
   }
-  createAccount(form: any): any{
+  createAccount(accountCreate : User): boolean{
     if(localStorage.getItem("accounts")){
       this.account = localStorage.getItem("accounts")
       this.account = this.account = JSON.parse(this.account?.toString())
-      if(this.accountExists(form.value.email)){
+      if(this.accountExists(accountCreate.email)){
         return false
       }else
-        this.account.push(form.value)
+        this.account.push(accountCreate)
       localStorage.setItem("accounts", JSON.stringify(this.account))
       return true
     }else{
       let array = []
-      array.push(form.value)
+      array.push(accountCreate)
       localStorage.setItem("accounts", JSON.stringify(array))
       return true
     }
   }
 
-  accountExists(teste: any): boolean{
+  accountExists(email: string): boolean{
     let a: boolean
     a = false
     for (let index = 0; index < this.account.length; index++) {
-      if(teste === this.account[index].email){
+      if(email === this.account[index].email){
         a = true
+        return true
         break
       }else{
         a = false
