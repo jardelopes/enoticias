@@ -1,3 +1,4 @@
+import { BehaviorSubject} from 'rxjs';
 import { User } from './../models/user';
 import { Injectable } from '@angular/core';
 
@@ -6,24 +7,31 @@ import { Injectable } from '@angular/core';
 })
 export class AccountService {
   account : any
-  user: any
+  u!: User
+  user = new BehaviorSubject<User>(this.u)
   constructor() { }
 
+  logoff(){
+    sessionStorage.removeItem('user')
+    this.user.next(this.u)
+  }
   login(formLogin: any): any{
     let l: boolean = false
     if(localStorage.getItem("accounts")){
       console.log(localStorage.getItem("accounts"))
       this.account = localStorage.getItem("accounts")
       this.account = JSON.parse(this.account?.toString())
-      this.account.forEach((element: any) => {
+      this.account.forEach((element: User) => {
           if(element.email === formLogin.value.email && element.senha === formLogin.value.senha){
             sessionStorage.setItem("user", JSON.stringify(element))
+            this.user.next(element)
             l = true
           }
       });
       return l
     }
   }
+
   createAccount(accountCreate : User): boolean{
     if(localStorage.getItem("accounts")){
       this.account = localStorage.getItem("accounts")
