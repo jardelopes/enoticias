@@ -3,6 +3,7 @@
     <div class="card p-3">
       <form [formGroup]="accountForm" (ngSubmit)="createAccount()">
         <h2 class="d-flex justify-content-center">Criar conta</h2>
+        <app-warning *ngIf="warning" [message]="'Conta já existe'"></app-warning>
         <div class="form-group">
           <label for="nome">Nome</label>
           <input type="text" id="nome" class="form-control" formControlName="nome">

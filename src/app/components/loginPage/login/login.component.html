@@ -3,6 +3,7 @@
     <div class="card p-3">
       <form [formGroup] = "loginForm" (ngSubmit)="login()">
         <h2 class="d-flex justify-content-center">Login</h2>
+        <app-warning *ngIf="warning" [message]="'Email e/ou senha inválidos'"></app-warning>
         <div class="form-group">
           <label for="email">E-mail</label>
           <input type="text" id="email" class="form-control" formControlName="email">
@@ -22,5 +23,4 @@
       </form>
     </div>
   </div>
-
 </div>

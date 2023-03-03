@@ -12,11 +12,13 @@ import { Router } from '@angular/router';
 export class LoginComponent {
   loginForm!: FormGroup;
   loginUser!: User
+  warning!: boolean
   constructor(private loginFormBuilder :  FormBuilder, private router: Router, private accountService : AccountService){
 
   }
 
   ngOnInit(){
+    this.warning =false
     this.loginForm = this.loginFormBuilder.group({
       email: ['', Validators.email],
       senha: ['', Validators.minLength(8)]
@@ -26,5 +28,7 @@ export class LoginComponent {
   login(){
     if(this.accountService.login(this.loginForm))
       this.router.navigate([''])
+    else
+      this.warning = true
   }
 }

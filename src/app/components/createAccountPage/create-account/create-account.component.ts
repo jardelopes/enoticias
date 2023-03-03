@@ -13,12 +13,14 @@ import { AccountService } from 'src/app/services/account.service';
 export class CreateAccountComponent {
   accountForm!: FormGroup;
   accountUser!: User;
+  warning!: boolean
+
   constructor(private accountFormBuilder :  FormBuilder, private router: Router, private accountService : AccountService){
 
   }
 
   ngOnInit(){
-
+    this.warning = false
     this.accountForm = this.accountFormBuilder.group({
       nome: [null, [Validators.required,Validators.minLength(3)]],
       email: [null, [Validators.required,Validators.email]],
@@ -30,8 +32,10 @@ export class CreateAccountComponent {
   createAccount(){
     this.accountUser = this.accountForm.value
     if(this.accountForm.valid){
-      this.accountService.createAccount(this.accountUser)
-      this.router.navigate([''])
+      if(this.accountService.createAccount(this.accountUser))
+        this.router.navigate([''])
+      else
+        this.warning = true
     }
   }
 }
