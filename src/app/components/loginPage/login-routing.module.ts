@@ -7,7 +7,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 const loginRoutes: Routes = [
   {path: '', component: LoginComponent},
-  {path: 'createAccount', component: CreateAccountComponent }
+  {path: 'createAccount', loadChildren: () => import('src/app/components/createAccountPage/create-account-page.module').then(m => m.CreateAccountPageModule)}
 ];
 
 @NgModule({

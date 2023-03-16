@@ -1,8 +1,10 @@
-import { WarningComponent } from './../shared/warning/warning.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 import { CreateAccountComponent } from './create-account/create-account.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { WarningComponent } from '../shared/warning/warning.component';
+import { CreateAccountRoutingModule } from './create-account-routing.module';
 
 
 
@@ -13,8 +15,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
   ],
   imports: [
     CommonModule,
-    ReactiveFormsModule,
     FormsModule,
+    ReactiveFormsModule,
+    CreateAccountRoutingModule
   ]
 })
 export class CreateAccountPageModule { }

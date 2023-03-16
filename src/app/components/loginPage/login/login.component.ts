@@ -20,8 +20,8 @@ export class LoginComponent {
   ngOnInit(){
     this.warning =false
     this.loginForm = this.loginFormBuilder.group({
-      email: ['', Validators.email],
-      senha: ['', Validators.minLength(8)]
+      email: ['', [Validators.required, Validators.email]],
+      senha: ['', [Validators.required, Validators.minLength(8)]]
     })
   }
 
