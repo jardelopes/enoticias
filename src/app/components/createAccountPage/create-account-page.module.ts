@@ -18,6 +18,9 @@ import { CreateAccountRoutingModule } from './create-account-routing.module';
     FormsModule,
     ReactiveFormsModule,
     CreateAccountRoutingModule
+  ],
+  exports: [
+    WarningComponent
   ]
 })
 export class CreateAccountPageModule { }
