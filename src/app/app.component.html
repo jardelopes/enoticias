@@ -1,23 +1,2 @@
-<div class="pb-5">
-  <nav class="navbar navbar-expand-sm navbar-dark bg-dark px-3 d-flex justify-content-between">
-      <div><a class="navbar-brand" href="#">E é notícias</a></div>
-    <div *ngIf="user| async, else login">
-      <div class="dropdown">
-        <button class="btn text-white dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-          {{u.nome}}
-        </button>
-        <ul class="dropdown-menu">
-          <li><span class="dropdown-item" (click)="logoff()">Sair</span></li>
-          <li><a class="dropdown-item" href="#">Editar perfil</a></li>
-          <li><a class="dropdown-item" href="#">Lista de leitura</a></li>
-        </ul>
-      </div>
-    </div>
-    <ng-template #login>
-      <div>
-        <a class="text-white text-decoration-none" routerLink="/login">Login</a>
-      </div>
-    </ng-template>
-  </nav>
-</div>
+<app-nav-bar></app-nav-bar>
 <router-outlet></router-outlet>

@@ -7,7 +7,12 @@
   color: black;
   text-decoration:none;
 }
-.btn:hover{
+.btn:hover, .btn:active{
   background-color: white;
   border-color: black;
 }
+.btn:focus{
+  background-color: white;
+  border-color: black;
+}
+

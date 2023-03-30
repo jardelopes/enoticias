@@ -9,7 +9,7 @@
     </div>
   </div>
   <div *ngFor="let news of news$ | async" class="pb-5">
-    <div class="">
+    <div >
       <a class="card text-decoration-none text-secondary"  href="{{news.url}}" >
         <img class="card-img-top" src="{{news.urlToImage}}" alt="Imagem de capa do card">
         <div class="card-body">

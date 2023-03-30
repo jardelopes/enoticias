@@ -8,18 +8,6 @@ import { User } from './models/user';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit {
+export class AppComponent{
   title = 'news';
-  u!: User
-  user = new BehaviorSubject<User>(this.u)
-  constructor(private accountService : AccountService){}
-  ngOnInit(){
-      this.user = this.accountService.user
-      this.user.subscribe(x =>{
-        this.u = x
-      })
-  }
-  logoff(){
-    this.accountService.logoff()
-  }
 }
